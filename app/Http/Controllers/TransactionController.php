@@ -55,7 +55,7 @@ class TransactionController extends Controller
             $resolve = $this->paystack->resolveAccountNo($acct_no, $bank_code);
 
             if(!$resolve['status']) {
-                return Master::failureResponse('Unable to Resolve Account Number', $resolve);
+                return Master::failureResponse('Unable to Resolve Account Number', $resolve, 404);
             }
 
             $recipient_name = $resolve['response']['data']['account_name'];  // hold recipient name
@@ -64,7 +64,7 @@ class TransactionController extends Controller
             $pingRecipient = $this->paystack->createTransferRecipient($recipient_name, $acct_no, $bank_code);
 
             if(!$pingRecipient['status']) {
-                return Master::failureResponse('Failed to Create Recipient', $pingRecipient);
+                return Master::failureResponse('Failed to Create Recipient', $pingRecipient, 403);
             }
 
             // store transfer recipient to db
@@ -87,7 +87,7 @@ class TransactionController extends Controller
             $transfer = $this->paystack->transferToRecipient($amount, $recipient->recipient_code, $reason);
 
             if(!$transfer['status']) {
-                return Master::failureResponse('Failed to Initiate Transfer', $transfer);
+                return Master::failureResponse('Failed to Initiate Transfer', $transfer, 403);
             }
 
             // store transactions to db
@@ -154,7 +154,7 @@ class TransactionController extends Controller
             $transfer = $this->paystack->transferToRecipient($amount, $recipient->recipient_code, $request->reason);
 
             if(!$transfer['status']) {
-                return Master::failureResponse('Failed to Initiate Transfer', $transfer);
+                return Master::failureResponse('Failed to Initiate Transfer', $transfer, 403);
             }
 
             // store transactions to db
@@ -215,7 +215,7 @@ class TransactionController extends Controller
             $finalize = $this->paystack->finalizeTransfer($transfer_code, $otp);
 
             if(!$finalize['status']) {
-                return Master::failureResponse('OTP Validation Error', $finalize);
+                return Master::failureResponse('OTP Validation Error', $finalize, 422);
             }
 
             // update transfer transaction db if status==success
@@ -254,7 +254,7 @@ class TransactionController extends Controller
             $checkStatus = $this->paystack->verifyTransfer($reference);
 
             if (!$checkStatus['status']) {
-                return Master::failureResponse('Unable to Verify Transfer', $checkStatus);
+                return Master::failureResponse('Unable to Verify Transfer', $checkStatus, 422);
             }
 
             $res = [
