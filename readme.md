@@ -41,9 +41,9 @@ composer install
 
 ## Consideration for Testing
 
-The sample live API URL is available here: http://localhost:4000
+The sample live API URL is available here: https://trybrassng.herokuapp.com
 
 Also, the postman collection is available publicly via 
-[POSTMAN](https://nodejs.org/en/)
+[POSTMAN](https://nodejs.org/en/), with test endpoints and post data.
 
 The database migration is available in the migrations folder.
