@@ -44,6 +44,20 @@ composer install
 The sample live API URL is available here: https://trybrassng.herokuapp.com
 
 Also, the postman collection is available publicly via 
-[POSTMAN](https://nodejs.org/en/), with test endpoints and post data.
+[POSTMAN](https://documenter.getpostman.com/view/3832128/T1LPDmuY?version=latest), with test endpoints and post data.
 
 The database migration is available in the migrations folder.
+
+This demo is dependent on the up-time of the paystack payment gateway.
+
+To simulate a successful demo, perform the following:
+
+- Create an account with relevant post data as seen in postman doc
+- Login in with account credentials to generate json web token
+- Use token as Bearer token to perform other operations as seen in postman doc
+- send money to single recipient account
+- call the finalize endpoint; use the obtained transfer_code and your otp to finalize the transfer
+- call the verify transfer endpoint for verification/checking transfer status
+- call the transfer to recipient endpoint to send money to already saved recipient/beneficiary
+- call the fetch user transfers endpoint to list all users transfers
+- call the fetch recipients endpoint to list all users recipients/beneficiaries
