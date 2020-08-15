@@ -249,6 +249,12 @@ class TransactionController extends Controller
      */
     public function verifyTransfer($reference)
     {
+        $transaction = Transaction::reference($reference)->first();
+
+        if(!$transaction) {
+            return Master::failureResponse('Invalid Reference', ['reference does not exist'], 404);
+        }
+
         try {
             // fetch transfer status
             $checkStatus = $this->paystack->verifyTransfer($reference);
