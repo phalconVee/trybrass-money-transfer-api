@@ -44,7 +44,7 @@ composer install
 The sample live API URL is available here: https://trybrassng.herokuapp.com
 
 Also, the postman collection is available publicly via 
-[POSTMAN](https://documenter.getpostman.com/view/3832128/T1LPDmuY?version=latest), with test endpoints and post data.
+[POSTMAN](https://documenter.getpostman.com/view/3832128/T1LPDmuY), with test endpoints and post data.
 
 The database migration is available in the migrations folder.
 
