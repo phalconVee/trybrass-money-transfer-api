@@ -22,3 +22,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     // recipients
     Route::get('recipients/list', 'RecipientController@fetchAllRecipients');
 });
+
+// banks
+Route::get('banks/list', 'BankController@fetchAllBanks');
