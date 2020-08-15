@@ -49,7 +49,8 @@ Also, the postman collection is available publicly via
 
 The database migration is available in the migrations folder.
 
-This demo is dependent on the up-time of the Paystack payment gateway.
+This demo is dependent on the up-time of the Paystack payment gateway. And all keys used are test keys as a result no actual money is transferred, and processes
+that involves live validation fails as well.
 
 To simulate a successful demo, perform the following:
 
@@ -57,7 +58,8 @@ To simulate a successful demo, perform the following:
 - Login in with account credentials to generate json web token
 - Use token as Bearer token to perform other operations as seen in postman doc
 - send money to single recipient account
-- call the finalize endpoint; use the obtained transfer_code and your otp to finalize the transfer
+- if returned status inside data block is *otp*, call the finalize endpoint; use the obtained transfer_code and your otp to finalize the transfer.
+- although, since it' a test account, no otp is sent, and the OTP you enter as sample will not be verified.
 - call the verify transfer endpoint for verification/checking transfer status
 - call the transfer to recipient endpoint to send money to already saved recipient/beneficiary
 - call the fetch user transfers endpoint to list all users transfers
