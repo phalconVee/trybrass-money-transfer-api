@@ -18,6 +18,7 @@ Endpoints exposed to clients include:
 - Fetch recipients list
 - Transfer to recipient
 - Fetch transfer list with filter options
+- Fetch banks list
 
 ## Requirements
 
@@ -48,7 +49,7 @@ Also, the postman collection is available publicly via
 
 The database migration is available in the migrations folder.
 
-This demo is dependent on the up-time of the paystack payment gateway.
+This demo is dependent on the up-time of the Paystack payment gateway.
 
 To simulate a successful demo, perform the following:
 
@@ -61,3 +62,6 @@ To simulate a successful demo, perform the following:
 - call the transfer to recipient endpoint to send money to already saved recipient/beneficiary
 - call the fetch user transfers endpoint to list all users transfers
 - call the fetch recipients endpoint to list all users recipients/beneficiaries
+
+N|B: Also, for the *bank_code* param, you can call the fetch banks list endpoint to retrieve the list of banks and their code
+you can use to consume endpoints where required.
